@@ -1,0 +1,604 @@
+/* General Reset and Globals */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  background: #f8fafc;
+  color: #111827;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  width: 100%;
+}
+
+/* Header Styles */
+.header {
+  background: #1e293b; /* Dark background for the navbar */
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+}
+
+.nav {
+  display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    padding: 0 24px; /* Allow items to wrap */
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 28px;
+  user-select: none;
+  display: flex;
+  align-items: center;
+}
+
+.menu-toggle {
+    display: none; /* Hidden by default, shown on mobile */
+    cursor: pointer;
+    align-items: center;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.nav-link {
+  color: white;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 12px;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  color: #fcd34d;
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-bottom: 3px solid #fcd34d;
+  border-radius: 4px;
+}
+
+/* Dropdown styles */
+.dropdown {
+  position: relative;
+}
+
+.btn-dropdown {
+  background: transparent;
+    border: none;
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center; /* Center dropdown button vertically */
+    gap: 4px;
+    padding: 8px 12px; /* Add padding for better touch targets */
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-dropdown:hover,
+.btn-dropdown:focus {
+  background-color: rgba(255 255 255 / 0.15);
+  outline: none;
+}
+
+.dropdown-menu {
+  position: absolute;
+    top: 100%;
+    right: 0;
+    background: #1e293b; /* Match the navbar background */
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    margin-top: 8px;
+    min-width: 180px;
+    display: none;
+    flex-direction: column;
+    z-index: 1001;
+}
+
+.dropdown-menu.show {
+  display: flex;
+}
+
+.dropdown-item {
+  background: transparent;
+    border: none;
+    text-align: left;
+    padding: 12px 16px; /* Add padding for dropdown items */
+    font-size: 15px;
+    color: #ffffff; /* White text for dropdown items */
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    border-radius: 6px;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+  background: #e0e7ff;
+}
+
+/* Main content styles */
+.main-content {
+  flex-grow: 1;
+  padding: 48px 0 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+
+/* Hero Section */
+.hero {
+    background: url('IMG/Scenery.avif') no-repeat center center/cover; /* Use the image without a gradient */
+    padding: 60px 20px;
+    text-align: center;
+    color: white;
+}
+.hero-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background for text readability */
+    padding: 20px;
+    border-radius: 12px; /* Optional: Rounded corners */
+}
+
+.text-effect.gradient-text {
+    background: linear-gradient(90deg, #6366f1, #0ea5e9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 4s ease infinite alternate;
+    font-weight: 800;
+    font-size: 3rem;
+    line-height: 1.1;
+    margin-bottom: 16px;
+}
+
+.intro-text {
+    font-size: 1.2rem;
+    max-width: 480px;
+    margin: auto;
+    color: #000; /* Light color for better contrast */
+    margin-bottom: 32px;
+}
+
+.intro-textt {
+    font-size: 1.2rem;
+    max-width: 480px;
+    margin: auto;
+    color: white; /* Light color for better contrast */
+    margin-bottom: 32px;
+}
+
+.btn-primary {
+    padding: 14px 36px;
+    background: linear-gradient(90deg, #6366f1, #0ea5e9);
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 6px 16px rgb(99, 102, 241 / 0.6);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 32px rgb(99, 102, 241 / 0.8);
+    outline: none;
+}
+
+/* Featured Dishes */
+.featured-dishes {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-weight: 800;
+  font-size: 2.25rem;
+  color: #1e293b;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+/* Dish list grid */
+.dish-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+  gap: 32px;
+}
+
+/* Each dish card */
+.dish-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.dish-card:hover,
+.dish-card:focus-within {
+  transform: translateY(-10px);
+  box-shadow: 0 24px 48px rgba(0,0,0,0.15);
+  outline: none;
+}
+
+.dish-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.dish-info {
+  padding: 16px 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-grow: 1;
+}
+
+.dish-name {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: #1e293b;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dish-description {
+  font-size: 0.9rem;
+  color: #4b5563;
+  flex-grow: 1;
+  margin-top: 4px;
+}
+
+.dish-category {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #0ea5e9;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  background: #bae6fd88;
+  padding: 2px 8px;
+  border-radius: 12px;
+  align-self: flex-start;
+  user-select: none;
+}
+
+/* Footer */
+.footer {
+  background: #1e293b;
+  color: #94a3b8;
+  text-align: center;
+  font-size: 0.875rem;
+  padding: 24px 0;
+  user-select: none;
+}
+
+/* Accessibility focus styles */
+:focus-visible {
+  outline: 3px solid #0ea5e9;
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+/* Responsive Layout */
+
+/* Small tablets and mobile: single column nav */
+@media (max-width: 768px) {
+  .menu-toggle {
+        display: flex; /* Show hamburger menu on mobile */
+        align-items: center; /* Center hamburger icon vertically */
+        font-size: 28px;
+        color: white;
+  }
+  .nav {
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items */
+    gap: 12px; /* Space between items */
+  }
+  .nav-list {
+    display: none; /* Hide nav list by default on mobile */
+        flex-direction: column; /* Stack items vertically */
+        width: 100%; /* Full width */
+        align-items: center; /* Center items */
+        gap: 8px; /* Space between nav items */
+        position: absolute; /* Positioning for dropdown */
+        top: 64px; /* Below the navbar */
+        left: 0;
+        background: #1e293b; /* Match the navbar background */
+        padding: 16px 0;
+  }
+  .nav-list.show {
+        display: flex; /* Show nav list when toggled */
+  }
+  .dropdown {
+    width: 100%; /* Full width for dropdown */
+    display: flex;
+    justify-content: center; /* Center dropdown button */
+  }
+  .main-content {
+    padding: 32px 0 64px;
+  }
+}
+
+/* Extra small mobile */
+@media (max-width: 480px) {
+  .text-effect.gradient-text {
+    font-size: 2rem;
+  }
+  .btn-primary {
+    width: 100%;
+    padding: 14px 0;
+  }
+  .dish-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Media grid for media.html */
+.media-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.media-item img,
+.media-item video {
+  width: 100%;
+  border-radius: 16px;
+  object-fit: cover;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+  max-height: 300px;
+}
+
+.media-item img:hover,
+.media-item video:hover {
+  transform: scale(1.05);
+}
+
+/* Form styles */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.form-label {
+  font-weight: 600;
+  color: #374151;
+}
+
+input[type="text"],
+input[type="email"],
+select,
+textarea {
+  padding: 12px 16px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  transition: border-color 0.3s ease;
+  font-family: inherit;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 8px #6366f1aa;
+}
+
+.form-help {
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.form-message {
+  font-weight: 600;
+  min-height: 1.4em;
+}
+
+/* Contact list */
+.contact-list {
+  list-style: none;
+  max-width: 400px;
+  margin: 32px auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: #374151;
+}
+
+.contact-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1rem;
+}
+
+.contact-list .material-icons {
+  color: #0ea5e9;
+}
+
+/* Settings form */
+.settings-form fieldset {
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 24px;
+}
+
+.settings-form legend {
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #374151;
+}
+
+.settings-form label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 8px;
+  color: #4b5563;
+}
+
+.settings-form select {
+  max-width: 200px;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1rem;
+  user-select: none;
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, #6366f1, #0ea5e9);
+  color: white;
+  padding: 14px 36px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(99,102,241,0.6);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px rgba(99,102,241,0.8);
+  outline: none;
+}
+
+/* Improved contact form container and layout */
+.contact-content {
+  display: flex;
+  gap: 48px;
+  max-width: 960px;
+  margin: 32px auto 0;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.form-container {
+  background: white;
+  padding: 32px 32px 40px;
+  border-radius: 24px;
+  box-shadow: 0 16px 32px rgb(14 165 233 / 0.2);
+  flex: 1 1 400px;
+  max-width: 480px;
+}
+
+.contact-info {
+  flex: 1 1 320px;
+  background: white;
+  border-radius: 24px;
+  padding: 32px;
+  box-shadow: 0 16px 32px rgb(14 165 233 / 0.15);
+  color: #374151;
+  min-width: 280px;
+}
+
+.contact-info h2 {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+/* Responsive adjustments for contact page */
+@media (max-width: 768px) {
+  .contact-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .form-container,
+  .contact-info {
+    max-width: 100%;
+  }
+}
+
+/* Recipe Section */
+.recipe {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 24px;
+    transition: transform 0.3s ease;
+}
+
+.recipe:hover {
+    transform: translateY(-4px);
+}
+
+.recipe-title {
+    font-size: 1.75rem;
+    color: #1e293b;
+    margin-bottom: 16px;
+}
+
+.recipe-image {
+    width: 100%; /* Make the image responsive */
+    max-width: 400px; /* Set a fixed maximum width */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 12px; /* Rounded corners */
+    margin: 0 auto; /* Center the image */
+    display: block; /* Ensure the image is treated as a block element */
+}
+
+.recipe-details {
+    margin-top: 16px;
+}
+
+.ingredients-list,
+.instructions-list {
+    margin-left: 20px;
+    margin-bottom: 16px;
+}

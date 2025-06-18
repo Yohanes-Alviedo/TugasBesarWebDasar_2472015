@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Media Gallery - Filipino Culinary Delights</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+</head>
+<body>
+<header class="header">
+  <nav class="nav container">
+    <a href="index.html" class="logo">FilipinoCuisine</a>
+    <div class="menu-toggle" id="mobileMenu">
+      <span class="material-icons">menu</span>
+    </div>
+    <ul class="nav-list" id="navList">
+      <li><a href="index.html" class="nav-link active">Home</a></li>
+      <li><a href="groups.html" class="nav-link">Groups</a></li>
+      <li><a href="media.html" class="nav-link">Media</a></li>
+      <li><a href="contacts.html" class="nav-link">Contact</a></li>
+      <li><a href="recipe.html" class="nav-link">Recipe</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="container main-content">
+  <section class="media-section">
+    <h1 class="text-effect gradient-text">Media Gallery</h1>
+    <p class="intro-textt">Enjoy photos that celebrate Filipino cuisine.</p>
+
+    <div class="media-grid" id="mediaGrid" aria-live="polite">
+      <!-- Media items inserted with JS loop -->
+    </div>
+  </section>
+</main>
+
+<footer class="footer container">
+  <p>© 2024 FilipinoCuisine. All rights reserved.</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

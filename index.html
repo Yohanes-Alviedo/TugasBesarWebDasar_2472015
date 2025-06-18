@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Filipino Culinary Delights - Home</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+</head>
+<body>
+    <header class="header">
+    <nav class="nav container">
+        <a href="index.html" class="logo">FilipinoCuisine</a>
+        <div class="menu-toggle" id="mobileMenu">
+            <span class="material-icons">menu</span>
+        </div>
+        <ul class="nav-list" id="navList">
+            <li><a href="index.html" class="nav-link active">Home</a></li>
+            <li><a href="groups.html" class="nav-link">Groups</a></li>
+            <li><a href="media.html" class="nav-link">Media</a></li>
+            <li><a href="contacts.html" class="nav-link">Contact</a></li>
+            <li><a href="recipe.html" class="nav-link">Recipe</a></li>
+            <li class="dropdown">
+                <button class="btn btn-dropdown" id="categoryDropdownBtn" aria-haspopup="true" aria-expanded="false">
+                    Categories <span class="material-icons">arrow_drop_down</span>
+                </button>
+                <ul class="dropdown-menu" id="categoryDropdown" role="menu" aria-label="Food Categories">
+                    <li><button class="dropdown-item" data-category="all">All</button></li>
+                    <li><button class="dropdown-item" data-category="dessert">Desserts</button></li>
+                    <li><button class="dropdown-item" data-category="main">Main Dishes</button></li>
+                    <li><button class="dropdown-item" data-category="snack">Snacks</button></li>
+                    <li><button class="dropdown-item" data-category="drink">Drinks</button></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+    <main class="container main-content">
+        <section class="hero">
+            <div class="hero-container">
+                <h1 class="text-effect gradient-text">Discover the Flavors of Filipino Cuisine</h1>
+                <p class="intro-textt">Explore traditional dishes, savory snacks, refreshing drinks, and delectable desserts from the Philippines.</p>
+                <button class="btn btn-primary" id="exploreBtn">Explore Popular Dishes</button>
+            </div>
+        </section>
+
+        <section class="featured-dishes">
+            <h2 class="section-title">Popular Dishes</h2>
+            <ul class="dish-list grid" id="dishList" aria-live="polite">
+                <!-- Dishes inserted by JS loop -->
+            </ul>
+        </section>
+    </main>
+
+    <footer class="footer container">
+        <p>© 2024 FilipinoCuisine. All rights reserved.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

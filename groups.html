@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Food Groups - Filipino Culinary Delights</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+</head>
+<body>
+<header class="header">
+  <nav class="nav container">
+    <a href="index.html" class="logo">FilipinoCuisine</a>
+    <div class="menu-toggle" id="mobileMenu">
+      <span class="material-icons">menu</span>
+    </div>
+    <ul class="nav-list" id="navList">
+      <li><a href="index.html" class="nav-link active">Home</a></li>
+      <li><a href="groups.html" class="nav-link">Groups</a></li>
+      <li><a href="media.html" class="nav-link">Media</a></li>
+      <li><a href="contacts.html" class="nav-link">Contact</a></li>
+      <li><a href="recipe.html" class="nav-link">Recipe</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="container main-content">
+  <section class="groups-section">
+    <h1 class="text-effect gradient-text">Filipino Food Groups</h1>
+    <p class="intro-text">Filter by regional cuisine and explore popular dishes from different regions of the Philippines.</p>
+    
+    <div class="dropdown">
+      <button class="btn btn-dropdown" id="regionDropdownBtn" aria-haspopup="true" aria-expanded="false">
+        Filter Regions <span class="material-icons">arrow_drop_down</span>
+      </button>
+      <ul class="dropdown-menu" id="regionDropdown" role="menu" aria-label="Filipino Regions">
+        <li><button class="dropdown-item" data-region="all">All Regions</button></li>
+        <li><button class="dropdown-item" data-region="luzon">Luzon</button></li>
+        <li><button class="dropdown-item" data-region="visayas">Visayas</button></li>
+        <li><button class="dropdown-item" data-region="mindanao">Mindanao</button></li>
+      </ul>
+    </div>
+
+    <ul class="group-list grid" id="groupList" aria-live="polite">
+      <!-- List items added by JS loop -->
+    </ul>
+  </section>
+</main>
+
+<footer class="footer container">
+  <p>© 2024 FilipinoCuisine. All rights reserved.</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

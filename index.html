@@ -7,35 +7,117 @@
     <link rel="stylesheet" href="style.css" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Navbar styles */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: #333;
+            color: white;
+            position: relative;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-list {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #ddd;
+        }
+
+        /* Mobile menu button */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+            outline: none;
+        }
+
+        .menu-toggle .material-icons {
+            color: white;
+            font-size: 30px;
+        }
+
+        /* Mobile menu styles */
+        @media (max-width: 768px) {
+            .nav-list {
+                position: absolute;
+                right: 0;
+                top: 100%;
+                background-color: #333;
+                flex-direction: column;
+                width: 100%;
+                padding: 1rem 0;
+                display: none; /* Hide by default */
+            }
+
+            .nav-list.active {
+                display: flex; /* Show when active */
+            }
+
+            .menu-toggle {
+                display: flex; /* Show menu toggle on mobile */
+            }
+        }
+    </style>
 </head>
 <body>
     <header class="header">
-    <nav class="nav container">
-        <a href="index.html" class="logo">FilipinoCuisine</a>
-        <div class="menu-toggle" id="mobileMenu">
-            <span class="material-icons">menu</span>
-        </div>
-        <ul class="nav-list" id="navList">
-            <li><a href="index.html" class="nav-link active">Home</a></li>
-            <li><a href="groups.html" class="nav-link">Groups</a></li>
-            <li><a href="media.html" class="nav-link">Media</a></li>
-            <li><a href="contacts.html" class="nav-link">Contact</a></li>
-            <li><a href="recipe.html" class="nav-link">Recipe</a></li>
-            <li class="dropdown">
-                <button class="btn btn-dropdown" id="categoryDropdownBtn" aria-haspopup="true" aria-expanded="false">
-                    Categories <span class="material-icons">arrow_drop_down</span>
-                </button>
-                <ul class="dropdown-menu" id="categoryDropdown" role="menu" aria-label="Food Categories">
-                    <li><button class="dropdown-item" data-category="all">All</button></li>
-                    <li><button class="dropdown-item" data-category="dessert">Desserts</button></li>
-                    <li><button class="dropdown-item" data-category="main">Main Dishes</button></li>
-                    <li><button class="dropdown-item" data-category="snack">Snacks</button></li>
-                    <li><button class="dropdown-item" data-category="drink">Drinks</button></li>
-                </ul>
-            </li>
-        </ul>
-    </nav>
-</header>
+        <nav class="nav container">
+            <a href="index.html" class="logo">FilipinoCuisine</a>
+            <div class="menu-toggle" id="mobileMenu">
+                <span class="material-icons">menu</span>
+            </div>
+            <ul class="nav-list" id="navList">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="groups.html" class="nav-link">Groups</a></li>
+                <li><a href="media.html" class="nav-link">Media</a></li>
+                <li><a href="contacts.html" class="nav-link">Contact</a></li>
+                <li><a href="recipe.html" class="nav-link">Recipe</a></li>
+                <li class="dropdown">
+                    <button class="btn btn-dropdown" id="categoryDropdownBtn" aria-haspopup="true" aria-expanded="false">
+                        Categories <span class="material-icons">arrow_drop_down</span>
+                    </button>
+                    <ul class="dropdown-menu" id="categoryDropdown" role="menu" aria-label="Food Categories">
+                        <li><button class="dropdown-item" data-category="all">All</button></li>
+                        <li><button class="dropdown-item" data-category="dessert">Desserts</button></li>
+                        <li><button class="dropdown-item" data-category="main">Main Dishes</button></li>
+                        <li><button class="dropdown-item" data-category="snack">Snacks</button></li>
+                        <li><button class="dropdown-item" data-category="drink">Drinks</button></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
 
     <main class="container main-content">
         <section class="hero">
@@ -58,6 +140,13 @@
         <p>© 2024 FilipinoCuisine. All rights reserved.</p>
     </footer>
 
-    <script src="app.js"></script>
+    <script>
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navList = document.getElementById('navList');
+
+        mobileMenu.addEventListener('click', () => {
+            navList.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
